@@ -1,0 +1,231 @@
+<form #employeeForm="ngForm" (ngSubmit)="saveForm()">
+    <div class="panel panel-primary" >
+        <div class="panel-heading">
+        <h3 class="panel-title">Create Membership</h3>
+        </div>
+        <div class="panel-body">
+<div class="row">
+    <div class="form-group" class="col-md-5" >
+        <label for="fname" class="control-label"> First Name</label>
+        <input type="text" id="fName" name="fName" [(ngModel)]="fName" class="form-control">
+        </div>
+
+    <div class="form-group" class="col-md-5" >
+        <label for="lname" class="control-label"> Last Name</label>
+        <input type="text" id="lName" name="lName" [(ngModel)]="lName" class="form-control" >
+        </div>
+</div>
+
+<div class="row">
+    <div class="form-group" class="col-md-5" >
+        <label for="uName" class="control-label" name="uName" [(ngModel)]="uName"> User Name</label>
+        <input type="text" id="uname"  class="form-control" >
+    </div>
+    <div class="form-group" class="col-md-5">
+        <label class="control-label">Gender</label>
+        <div class="form-control">
+        <label class="radio-inline">
+            <input type="radio" value="male" name="gender" [(ngModel)]="gender" checked >Male
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="female" name="gender" [(ngModel)]="gender" >Female
+        </label>
+        
+    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group" class="col-md-5" >
+        <label for="name" class="control-label"> Phone Number</label>
+        <input type="text" id="pNumber" name="pNumber" [(ngModel)]="pNumber"  class="form-control" >
+        
+    </div>
+    <div class="form-group" class="col-md-5" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="cNumber" class="control-label"> Cell Phone  Number</label>
+        <input type="text" id="cNumber" name="cNumber" [(ngModel)]="cNumber" class="form-control" >
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group" class="col-md-5">
+            <label for="dateOfBirth">DOB</label>
+            <input type="text" type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth"  class="form-control" placement="right">
+        </div>
+
+        <div class="form-group" class="col-md-5" [class.has-error]="materialst.invalid && materialst.touched">
+            <label class="control-label">Material Status</label>
+            <div class="form-control">
+            <label class="radio-inline">
+                <input type="radio" value="married" name="materialst" [(ngModel)]="employee.materialst" checked required #materialst="ngModel">Married
+            </label>
+            <label class="radio-inline">
+                <input type="radio" value="unmarried" name="materialst" [(ngModel)]="employee.materialst" required #materialst="ngModel">Unmarried
+            </label>
+            <span class="help-block" *ngIf="materialst.invalid && materialst.touched"> Material Status is required</span>
+        </div>
+        </div>
+    </div>
+
+
+<div class="row">
+    <div class="form-group" class="col-md-5" >
+            
+        <label for="parishch" class="control-label">
+            Parish Church
+        </label>
+        
+        <select id="parishCh"  name="parishCh" [(ngModel)]="parishCh"  class="form-control" >
+        
+            <option  value="-1">Select Church</option>
+            <option  [value]="1">Chicago</option>
+            <option [value]="2">Texas</option>
+            <option [value]="3">Florida</option>
+            <option>HR</option>
+            <!-- <option *ngFor="let pa of parishes" [value]="pa.id">{{pa.name}}</option> -->
+            </select>
+            <span class="help-block" *ngIf="parishch.invalid && parishch.errors?.defaultSelected"> Parish is required</span>
+
+    </div>
+    <div class="form-group" class="col-md-5" [class.has-error]="role.invalid && role.touched" [class.has-success]="email.valid">
+            
+        <label for="role" class="control-label">
+            Role
+        </label>
+        
+        <select id="role"  name="role" [(ngModel)]="member.role" #role="ngModel" class="form-control" >
+            <option  value="-1">Select Role</option>
+            <option [value]="1">Parishner</option>
+            <option [value]="2">Trustee</option>
+            </select>
+            <span class="help-block" *ngIf="role.invalid && role.errors?.defaultSelected"> Role is required</span>
+
+    </div>
+</div>
+    <br/>
+    
+    <div class="row" >
+        <div class="col-md-5">
+        <label for="role" class="control-label">
+            Existing Address
+        </label>
+       <br/>
+    
+    
+    <button type="submit" class="btn btn-primary black-background" >Yes</button>
+    <button type="submit" class="btn btn-primary black-background1">No</button>
+
+</div>
+<div class="col-md-5">
+    <label for="role" class="control-label">
+        Voting Member
+    </label>
+   <br/>
+
+
+<button type="submit" class="btn btn-primary black-background">Yes</button>
+<button type="submit" class="btn btn-primary black-background1" >No</button>
+
+</div>
+</div>
+</div>
+        <div class="panel-footer" style="text-align: right;">
+            <button type="submit" class="btn btn-primary" (click)="toggleDisplay()" >Next</button>
+        </div>
+
+<div class="panel-body"  >
+    <div class="row">
+        <div class="form-group" class="col-md-5" >
+            <label for="address1" class="control-label">Address1</label>
+            <textarea type="text" id="address1" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+  
+            </div>
+    
+        <div class="form-group" class="col-md-5" >
+            <label for="address2" class="control-label"> Address2</label>
+            <textarea type="text" id="address1" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+            </div>
+    </div>
+    <div class="row">
+        
+        <div class="form-group" class="col-md-2" >
+            <label for="faName" class="control-label"> Family Name</label>
+            <input type="text" id="faName" name="faName" [(ngModel)]="faName" class="form-control">
+            </div>
+    <div class="col-md-2"></div>
+        <div class="form-group" class="col-md-2" >
+            <label for="cityName" class="control-label"> City</label>
+            <input type="text" id="cityName" name="cityName" [(ngModel)]="cityName" class="form-control" >
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group" class="col-md-2" >
+                <label for="sname" class="control-label">  State</label>
+                <input type="text" id="sName" name="sName" [(ngModel)]="sName" class="form-control" >
+                </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group" class="col-md-5" >
+            <label for="contyName" class="control-label"> County</label>
+            <input type="text" id="contyName" name="contyName" [(ngModel)]="contyName" class="form-control">
+            </div>
+    
+        <div class="form-group" class="col-md-5" >
+            <label for="zipCode" class="control-label"> Zip Code</label>
+            <input type="text" id="zipCode" name="zipCode" [(ngModel)]="zipCode" class="form-control" >
+            </div>
+    </div>
+    <div class="row" >
+        <div class="form-group" class="col-md-5" >
+            <label for="amountPaid" class="control-label"> Amount Paid</label>
+            <input type="text" id="contyName" name="contyName" [(ngModel)]="contyName" class="form-control">
+            </div>
+            <div class="form-group" class="col-md-5">
+                <label for="amountReceived">Amount Received On</label>
+                <input type="text" type="date" id="amountReceived" name="amountReceived" [(ngModel)]="amountReceived" class="form-control" placement="right">
+            </div>
+    </div>
+    
+    <div class="row">
+    <div class="form-group" class="col-md-5" >
+            
+        <label for="paymentMode" class="control-label">
+            Payment Mode
+        </label>
+        
+        <select id="paymentMode"  name="paymentMode" [(ngModel)]="paymentMode"  class="form-control" >
+        
+            <option  value="-1">Select Payment</option>
+            <option  [value]="1">Card</option>
+            <option [value]="2">Paypal</option>
+            <option [value]="3">Cash</option>
+            <option>HR</option>
+            <!-- <option *ngFor="let pa of parishes" [value]="pa.id">{{pa.name}}</option> -->
+            </select>
+            <span class="help-block" *ngIf="parishch.invalid && parishch.errors?.defaultSelected"> Parish is required</span>
+
+    </div>
+    <div class="form-group" class="col-md-5" [class.has-error]="role.invalid && role.touched" [class.has-success]="email.valid">
+            
+        <label for="memberShip" class="control-label">
+            Membership Provided By
+        </label>
+        
+        <select id="memberShip"  name="memberShip" [(ngModel)]="memberShip"  class="form-control" >
+            <option  value="-1">Select MemberShip</option>
+            <option [value]="1">Life Long</option>
+            <option [value]="2">Normal</option>
+            </select>
+            <span class="help-block" *ngIf="role.invalid && role.errors?.defaultSelected"> Role is required</span>
+
+    </div>
+</div>
+ </div>
+
+ <div class="panel-footer" style="text-align: right;" *ngIf="isShow">
+    <button type="submit" class="btn btn-primary black-background1" [disabled]="employeeForm.invalid">Previous</button>
+    <button type="submit" class="btn btn-primary black-background2" [disabled]="employeeForm.invalid">Save</button>
+</div>
+    </div>
+    </form>
+    {{employeeForm.value | json}}
