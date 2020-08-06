@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Parish} from '../models/parish.models';
+import { Parish } from '../models/parish.models';
 import { NgForm } from '@angular/forms';
 
-import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
+
 
 
 
@@ -12,19 +12,19 @@ import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-gender="male";
-isShow=false;
+  gender = "male";
+  isShow = false;
   constructor() { }
 
   ngOnInit() {
   }
-parishes:Parish[]=[
-  {id:1,name:'Chicago'},
-  {id:2,name:'Texas'},
-  {id:3,name:'New Jersy'}
-];
+  parishes: Parish[] = [
+    { id: 1, name: 'Chicago' },
+    { id: 2, name: 'Texas' },
+    { id: 3, name: 'New Jersy' }
+  ];
 
-toggleDisplay() {
-  this.isShow = true;
-}
+  toggleDisplay() {
+    this.isShow = true;
+  }
 }
